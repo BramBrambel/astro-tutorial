@@ -1,0 +1,79 @@
+---
+import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogPost from "../components/BlogPost.astro";
+import Card from "../components/Card.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+const allPosts = await Astro.glob('../pages/posts/*.md');
+const pageTitle = "Highlighted Features"
+const featureData = [
+{title:'Secure Payment Processing',
+    body:'Our platform leverages user data and behavior to provide a highly personalized experience'
+},
+{
+    title:'Mobile-Optimized Interface',
+    body:'We use cutting-edge security measures to protect our customers'
+},
+{
+     title:'Mobile-Optimized Interface',
+    body:'We use cutting-edge security measures to protect our customers'
+},
+{
+     title:'Mobile-Optimized Interface',
+    body:'We use cutting-edge security measures to protect our customers'
+}
+];
+---
+
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Features</title>
+	</head>
+	<body>
+<Header/>
+<div class="bg-gray-100 min-h-screen p-4">
+    <div class="container mx-auto pt-12 pb-20">
+    
+            <h2 class="text-4xl font-bold text-gray-800 text-center mb-8">{pageTitle}</h2>
+            <p class="text-gray-700 text-lg text-center mb-12">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet magna id ex hendrerit semper.
+            </p>
+
+       <!--  <div class="flex flex-col md:flex-row">
+            
+            <div class="mr-0 md:mr-8 mb-6 md:mb-0">
+                <img class="" src="/src/images/test1.jpg" alt="can_help_banner" width="400" height="400">
+            </div>-->
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                    <!--{featureData.map(feature=> (<Card title= {feature.title} body={feature.body}/>
+                   
+            
+                    ))}-->
+                   { allPosts.map(post =>(
+                    <Card>
+                       <h2 class="text-xl font-bold text-gray-800 mb-4"> <BlogPost url={post.url} title={post.frontmatter.title} />
+			
+		</h2><p class="text-gray-700">
+			{post.frontmatter.description}
+		</p>
+                    </Card>
+                   ))}
+                    
+
+</div>
+</div>
+        
+</div>
+
+<Footer/>
+
+</body>
+</html>

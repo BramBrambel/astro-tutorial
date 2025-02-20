@@ -1,0 +1,17 @@
+---
+import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Greeting from '../components/Greeting';
+import ServiseListings from '../components/ServiseListings';
+
+
+const pageTitle = "Home Page";
+---
+<BaseLayout pageTitle={pageTitle}>
+<Greeting/>
+
+<ServiseListings/>
+
+
+
+</BaseLayout>
